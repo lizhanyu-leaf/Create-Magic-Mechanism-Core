@@ -1,7 +1,9 @@
 package com.leaf.cmm.content.technology;
 
 import com.google.common.collect.Maps;
+import com.leaf.cmm.CmmAllPackets;
 import com.leaf.cmm.mixin.technology.RecipeManagerAccessor;
+import com.leaf.cmm.packet.RestartJEIPacket;
 import net.minecraft.network.protocol.game.ClientboundUpdateRecipesPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -11,6 +13,8 @@ import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.client.event.RecipesUpdatedEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.network.NetworkDirection;
+import net.minecraftforge.network.PacketDistributor;
 
 import java.util.List;
 import java.util.Map;
@@ -45,8 +49,10 @@ public final class TechnologySystem {
 
         if (notifyJEI) {
             var recipePacket = new ClientboundUpdateRecipesPacket(server.getRecipeManager().getRecipes());
+            var restartPacket = new RestartJEIPacket();
             for (ServerPlayer player : server.getPlayerList().getPlayers()) {
                 player.connection.send(recipePacket);
+                CmmAllPackets.getChannel().send(PacketDistributor.PLAYER.with(()->player), restartPacket);
             }
         }
     }

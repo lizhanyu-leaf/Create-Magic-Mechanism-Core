@@ -14,7 +14,9 @@
     "technology.RecipeManagerAccessor",
     "technology.RecipesEventJSMixin"
   ],
-  "client": [],
+  "client": [
+    "technology.StartEventObserverMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class UploadTaskBlock extends BaseEntityBlock {
-    protected UploadTaskBlock(Properties p_49224_) {
+    public UploadTaskBlock(Properties p_49224_) {
         super(p_49224_);
     }
 
