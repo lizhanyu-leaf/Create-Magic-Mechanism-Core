@@ -142,6 +142,10 @@ repositories {
     // }
 
     maven {
+        url "https://cursemaven.com"
+    }
+
+    maven {
         url "https://maven.latvian.dev/releases"
         content {
             includeGroup "dev.latvian.mods"
@@ -163,13 +167,6 @@ repositories {
         url "https://maven.theillusivec4.top/"
         content {
             includeGroup "top.theillusivec4.curios"
-        }
-    }
-
-    maven {
-        url "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
         }
     }
 
@@ -220,8 +217,9 @@ dependencies {
     implementation(fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}"))
 
     // MixinExtras
-    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
-    implementation("io.github.llamalad7:mixinextras-forge:0.4.1")
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.2"))
+    implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.5.2")) {
+        jarJar.ranged(it, "[0.5.2,)")}
 
     // Architectury
     runtimeOnly(fg.deobf("dev.architectury:architectury-forge:${architectury_version}"))
@@ -231,6 +229,12 @@ dependencies {
 
     // KubeJS
     implementation(fg.deobf("dev.latvian.mods:kubejs-forge:${kubejs_version}"))
+
+    // FTB Quests
+    implementation fg.deobf("curse.maven:ftb-library-forge-404465:5051953")
+    implementation fg.deobf("curse.maven:ftb-teams-forge-404468:5176343")
+    implementation fg.deobf("curse.maven:ftb-quests-forge-289412:5192381")
+    implementation fg.deobf("curse.maven:ftb-xmod-compat-889915:4932157")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }

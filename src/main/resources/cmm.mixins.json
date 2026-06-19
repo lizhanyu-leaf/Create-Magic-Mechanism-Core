@@ -4,9 +4,15 @@
   "package": "com.leaf.cmm.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "cmm.refmap.json",
+  "mixinextras": {
+    "minVersion": "0.5.2"
+  },
   "mixins": [
     "GameTypeMixin",
-    "ItemEntityMixin"
+    "ItemEntityMixin",
+    "technology.RecipeJSMixin",
+    "technology.RecipeManagerAccessor",
+    "technology.RecipesEventJSMixin"
   ],
   "client": [],
   "injectors": {
