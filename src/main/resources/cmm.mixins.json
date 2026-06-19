@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.leaf.cmm.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "cmm.refmap.json",
+  "mixins": [
+    "GameTypeMixin",
+    "ItemEntityMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
