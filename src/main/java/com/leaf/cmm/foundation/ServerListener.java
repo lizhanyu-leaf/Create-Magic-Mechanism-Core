@@ -16,7 +16,7 @@ public class ServerListener {
         TechnologyStorage storage = TechnologyStorage.getOrCreateInstance(event.getServer());
         CreateMagicMechanismCore.LOGGER.info("科技数据已加载, 存档路径: " + storage.getFilePath());
 
-        TechnologySystem.apply(event.getServer().getRecipeManager());
+        TechnologySystem.apply(event.getServer(), false);
     }
 
     @SubscribeEvent

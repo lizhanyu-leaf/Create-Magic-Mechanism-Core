@@ -25,6 +25,11 @@ public class RecipesEventJSMixin {
         TechnologySystem.TECHNOLOGY_RECIPES.clear();
     }
 
+    @Inject(method = "post", at = @At("RETURN"))
+    private void end(RecipeManager recipeManager, Map<ResourceLocation, JsonElement> datapackRecipeMap, CallbackInfo ci) {
+        TechnologySystem.apply(recipeManager);
+    }
+
     @Inject(method = "createRecipe", at = @At(value = "RETURN", ordinal = 0), remap = false, cancellable = true)
     private void createRecipeMixin(RecipeJS r, CallbackInfoReturnable<Recipe<?>> cir) {
         var isTechRecipe = ((ITechnologyRecipeJS) r).createMagicMechanismCore$isTechnologyRecipe();

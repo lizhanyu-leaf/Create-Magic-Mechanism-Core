@@ -20,7 +20,7 @@ public class TechnologyTools extends EventJS {
         return TechnologyStorage.getInstance().isActive(technologyId);
     }
 
-    public void applyTechnology(MinecraftServer server) {
-        TechnologySystem.apply(server.getRecipeManager());
+    public void applyTechnology(MinecraftServer server, boolean notifyJEI) {
+        TechnologySystem.apply(server, notifyJEI);
     }
 }
