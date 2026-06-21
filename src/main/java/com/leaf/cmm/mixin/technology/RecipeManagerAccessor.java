@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 import java.util.Map;
 
-@Mixin(value = RecipeManager.class, remap = false)
+@Mixin(value = RecipeManager.class)
 public interface RecipeManagerAccessor {
     @Accessor("byName")
     Map<ResourceLocation, Recipe<?>> getByName();

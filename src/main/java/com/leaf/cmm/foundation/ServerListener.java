@@ -15,14 +15,13 @@ public class ServerListener {
     public static void onServerStarting(ServerStartingEvent event) {
         TechnologyStorage storage = TechnologyStorage.getOrCreateInstance(event.getServer());
         CreateMagicMechanismCore.LOGGER.info("科技数据已加载, 存档路径: " + storage.getFilePath());
-
-        TechnologySystem.apply(event.getServer(), false);
     }
 
     @SubscribeEvent
     public static void onServerStopping(ServerStoppingEvent event) {
         // 服务器关闭时保存并重置
-        TechnologyStorage storage = TechnologyStorage.getOrCreateInstance(event.getServer());
+        TechnologyStorage storage = TechnologyStorage.getInstance();
+        if (storage == null) return;
         storage.save();
         TechnologyStorage.reset();
     }

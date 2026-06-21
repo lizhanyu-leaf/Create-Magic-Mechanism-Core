@@ -1,6 +1,7 @@
 package com.leaf.cmm.mixin.technology;
 
 import com.google.gson.JsonElement;
+import com.leaf.cmm.content.technology.TechnologyStorage;
 import com.leaf.cmm.content.technology.TechnologySystem;
 import com.leaf.cmm.kubejs.ITechnologyRecipeJS;
 import dev.latvian.mods.kubejs.recipe.RecipeJS;
@@ -22,12 +23,15 @@ public class RecipesEventJSMixin {
 
     @Inject(method = "post", at = @At("HEAD"))
     private void init(RecipeManager recipeManager, Map<ResourceLocation, JsonElement> datapackRecipeMap, CallbackInfo ci) {
-        TechnologySystem.TECHNOLOGY_RECIPES.clear();
+        TechnologySystem.clear();
     }
 
     @Inject(method = "post", at = @At("RETURN"))
     private void end(RecipeManager recipeManager, Map<ResourceLocation, JsonElement> datapackRecipeMap, CallbackInfo ci) {
-        TechnologySystem.apply(recipeManager);
+        TechnologyStorage.whenCreate(() -> {
+            TechnologySystem.setDirty();
+            TechnologySystem.apply(recipeManager);
+        });
     }
 
     @Inject(method = "createRecipe", at = @At(value = "RETURN", ordinal = 0), remap = false, cancellable = true)

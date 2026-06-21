@@ -10,7 +10,9 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 
 public class TechnologyStorage {
 
@@ -20,11 +22,21 @@ public class TechnologyStorage {
     private final Map<String, Boolean> technologies = new HashMap<>();
     private final Path filePath;
 
+    private static final Queue<Runnable> whenCreate = new LinkedList<>();
+
     private static TechnologyStorage INSTANCE;
 
     private TechnologyStorage(Path worldDir) {
         this.filePath = worldDir.resolve(FILE_NAME);
         load();
+    }
+
+    public static void whenCreate(Runnable runnable) {
+        if (INSTANCE != null) {
+            runnable.run();
+            return;
+        }
+        whenCreate.add(runnable);
     }
 
     public static TechnologyStorage getOrCreateInstance(MinecraftServer server) {
@@ -33,6 +45,8 @@ public class TechnologyStorage {
             ServerLevel overworld = server.overworld();
             Path worldDir = overworld.getServer().getWorldPath(net.minecraft.world.level.storage.LevelResource.ROOT);
             INSTANCE = new TechnologyStorage(worldDir);
+
+            whenCreate.forEach(Runnable::run);
         }
         return INSTANCE;
     }
@@ -81,6 +95,8 @@ public class TechnologyStorage {
     }
 
     public void setActive(String techId, boolean active) {
+        if (technologies.getOrDefault(techId, false) == active) return;
+        TechnologySystem.setDirty();
         technologies.put(techId, active);
         save(); // 立即保存
     }
