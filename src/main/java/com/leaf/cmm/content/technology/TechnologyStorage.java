@@ -46,7 +46,10 @@ public class TechnologyStorage {
             Path worldDir = overworld.getServer().getWorldPath(net.minecraft.world.level.storage.LevelResource.ROOT);
             INSTANCE = new TechnologyStorage(worldDir);
 
-            whenCreate.forEach(Runnable::run);
+            while  (!whenCreate.isEmpty()) {
+                Runnable runnable = whenCreate.poll();
+                runnable.run();
+            }
         }
         return INSTANCE;
     }

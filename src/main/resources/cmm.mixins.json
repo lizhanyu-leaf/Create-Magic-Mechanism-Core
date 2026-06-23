@@ -10,6 +10,7 @@
   "mixins": [
     "GameTypeMixin",
     "ItemEntityMixin",
+    "NetherPortalBlockMixin",
     "technology.RecipeJSMixin",
     "technology.RecipeManagerAccessor",
     "technology.RecipesEventJSMixin"
