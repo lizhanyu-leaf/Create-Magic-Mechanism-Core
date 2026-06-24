@@ -38,7 +38,7 @@ public class CreateMagicMechanismCore {
 
         REGISTRATE.registerEventListeners(modEventBus);
 
-        FMLJavaModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        FMLJavaModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CmmAllConfig.SPEC);
     }
 
     public static ResourceLocation asResource(String path){

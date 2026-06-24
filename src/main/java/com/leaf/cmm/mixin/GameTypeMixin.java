@@ -1,5 +1,6 @@
 package com.leaf.cmm.mixin;
 
+import com.leaf.cmm.CmmAllConfig;
 import net.minecraft.world.entity.player.Abilities;
 import net.minecraft.world.level.GameType;
 import org.spongepowered.asm.mixin.Mixin;
@@ -12,6 +13,7 @@ public class GameTypeMixin {
 
     @Inject(method = "updatePlayerAbilities", at = @At("TAIL"))
     void alwaysAllowFly(Abilities p_46399_, CallbackInfo ci) {
-        p_46399_.mayfly = true;
+        if (CmmAllConfig.alwaysFly)
+            p_46399_.mayfly = true;
     }
 }
