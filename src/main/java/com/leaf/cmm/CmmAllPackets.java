@@ -34,7 +34,7 @@ public enum CmmAllPackets {
     private static SimpleChannel channel;
     private final PacketType<?> packetType;
 
-    private <T extends SimplePacketBase> CmmAllPackets(Class<T> type, Function<FriendlyByteBuf, T> factory, NetworkDirection direction) {
+    <T extends SimplePacketBase> CmmAllPackets(Class<T> type, Function<FriendlyByteBuf, T> factory, NetworkDirection direction) {
         this.packetType = new PacketType<>(type, factory, direction);
     }
 

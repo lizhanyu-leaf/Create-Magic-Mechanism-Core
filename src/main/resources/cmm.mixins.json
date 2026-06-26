@@ -11,6 +11,7 @@
     "GameTypeMixin",
     "ItemEntityMixin",
     "NetherPortalBlockMixin",
+    "gauge.FactoryPanelBehaviourMixin",
     "technology.RecipeJSMixin",
     "technology.RecipeManagerAccessor",
     "technology.RecipesEventJSMixin"
