@@ -1,5 +1,13 @@
 {
   "cmm.recipe.item_combine": "物品合成",
   "cmm.recipe.item_combine.catalysts": "将掉落物聚在一起合成",
-  "cmm.recipe.assembly.item_combine": "掉落物合成"
+  "cmm.recipe.assembly.item_combine": "掉落物合成",
+  "item.cmm.redprint": "红图",
+  "cmm.redprint.success": "移除成功",
+  "cmm.redprint.abort": "取消选择",
+  "cmm.redprint.dimensions": "选区大小: %sx%sx%s",
+  "cmm.redprint.firstPos": "第一个位置",
+  "cmm.redprint.noTarget": "按住 [Ctrl] 选择空气方块",
+  "cmm.redprint.secondPos": "第二个位置",
+  "cmm.redprint.too_many_blocks": "选区过大"
 }

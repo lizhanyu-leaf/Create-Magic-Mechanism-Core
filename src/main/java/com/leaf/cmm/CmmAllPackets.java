@@ -5,6 +5,7 @@
 
 package com.leaf.cmm;
 
+import com.leaf.cmm.content.redprint.RedprintPacket;
 import com.leaf.cmm.packet.RestartJEIPacket;
 import com.simibubi.create.foundation.networking.SimplePacketBase;
 
@@ -26,7 +27,8 @@ import net.minecraftforge.network.PacketDistributor.TargetPoint;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public enum CmmAllPackets {
-    RESTART_JEI(RestartJEIPacket.class, RestartJEIPacket::new, NetworkDirection.PLAY_TO_CLIENT);
+    RESTART_JEI(RestartJEIPacket.class, RestartJEIPacket::new, NetworkDirection.PLAY_TO_CLIENT),
+    REDPRINT(RedprintPacket.class, RedprintPacket::new, NetworkDirection.PLAY_TO_SERVER);
 
     public static final ResourceLocation CHANNEL_NAME;
     public static final int NETWORK_VERSION = 3;

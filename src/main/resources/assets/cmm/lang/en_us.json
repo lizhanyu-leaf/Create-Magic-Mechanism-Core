@@ -1,5 +1,13 @@
 {
   "cmm.recipe.item_combine": "Item Combine",
   "cmm.recipe.item_combine.catalysts": "Drop items together to craft",
-  "cmm.recipe.assembly.item_combine": "Item Combine"
+  "cmm.recipe.assembly.item_combine": "Item Combine",
+  "item.cmm.redprint": "Red Print",
+  "cmm.redprint.success": "Remove Success",
+  "cmm.redprint.abort": "Removed selection.",
+  "cmm.redprint.dimensions": "Selection Dimensions: %sx%sx%s",
+  "cmm.redprint.firstPos": "First position set.",
+  "cmm.redprint.noTarget": "Hold [Ctrl] to select Air blocks.",
+  "cmm.redprint.secondPos": "Second position set.",
+  "cmm.redprint.too_many_blocks": "Too many blocks selected."
 }

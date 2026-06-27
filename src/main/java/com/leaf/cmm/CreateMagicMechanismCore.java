@@ -33,6 +33,7 @@ public class CreateMagicMechanismCore {
 
         MinecraftForge.EVENT_BUS.register(this);
 
+        CmmAllItems.register();
         CmmAllPackets.registerPackets();
         CmmAllRecipeTypes.register(modEventBus);
 
